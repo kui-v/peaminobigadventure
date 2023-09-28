@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2kstcmrg4s4e"]
+[gd_scene load_steps=5 format=3 uid="uid://b2kstcmrg4s4e"]
 
 [ext_resource type="TileSet" uid="uid://8c7dbo8etpbo" path="res://Tiles/TileSet.tres" id="1_af4mx"]
+[ext_resource type="Script" path="res://Levels/LevelTest.gd" id="1_wmi1u"]
 [ext_resource type="PackedScene" uid="uid://bfslybd0wno1v" path="res://Player/Player.tscn" id="2_m1pgs"]
+[ext_resource type="PackedScene" uid="uid://cqo7dygcyroab" path="res://Objects/exit_sign.tscn" id="3_2mosi"]
 
 [node name="LevelTest" type="Node2D"]
+script = ExtResource("1_wmi1u")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_af4mx")
@@ -26,3 +29,8 @@ layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(131069, 327683, 3, 131070, 327683, 3, 131071, 327683, 3, 65536, 327683, 3, 65537, 327683, 3, 65538, 327683, 3, 65539, 327683, 3, 65540, 393219, 3, 3, 458755, 0, 4, 589827, 0, -65532, 589827, 0, 7, 589827, 0, 65541, 262147, 3, 65542, 327683, 3, 65543, 393219, 3, -65531, 262147, 2, -65530, 327683, 2, -65529, 393219, 2, -131067, 262147, 1, -196602, 327683, 0, -131065, 393219, 1, -262138, 262147, 0, -327674, 262147, 0, -393210, 262147, 0, 131068, 327683, 3, 131067, 327683, 3, 131066, 327683, 3, 131065, 262147, 3, -65535, 196611, 6, -131064, 458755, 4, -65527, 524291, 5, -65528, 458755, 5, 8, 458755, 6, -131063, 524291, 4, 9, 524291, 6, -131062, 524291, 4, -65526, 524291, 5, 10, 524291, 6, -131061, 589827, 4, -65525, 589827, 5, 11, 589827, 6)
 
 [node name="Player" parent="." instance=ExtResource("2_m1pgs")]
+
+[node name="ExitSign" parent="." instance=ExtResource("3_2mosi")]
+position = Vector2(182, -39)
+
+[connection signal="body_entered" from="ExitSign" to="." method="_on_exit_sign_body_entered"]
